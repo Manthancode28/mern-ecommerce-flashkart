@@ -1,8 +1,7 @@
 
 # FlashKart 🛒⚡
 
-**FlashKart** is a modern, responsive, and fully functional e-commerce web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It provides a seamless shopping experience for users and a robust administration panel for managing products and users. This project demonstrates a strong understanding of full-stack development, secure authentication, and efficient data management.
-
+A full-stack MERN e-commerce web application built for a seamless online shopping experience with modern UI, secure authentication, and real-time cart functionality.
 ---
 
 ## 🚀 Features
@@ -29,9 +28,24 @@
 
 ---
 
+## 📁 Folder Structure
+
+├── backend/             # Node/Express backend
+│   ├── config/
+│   ├── controllers/
+|   ├── helpers/
+|   ├── middleware
+│   ├── models/
+│   └── routes/  
+├── client/             # React frontend
+│   ├── public/
+│   └── src/
+
+---
+
 ## 👨‍💻 About Me
 
-I'm Manthan, a 4th-year IT student passionate about web development and building real-world projects.  
-I've built FlashKart to demonstrate my MERN stack skills with clean UI and full-stack functionality.
-=======
->>>>>>> 67fac25 (Switched to environment variable for backend URL)
+Hi, I’m **Manthan Nimonkar** – a final-year IT student who’s passionate about full-stack web development.
+FlashKart is one of my key projects where I’ve applied the **MERN stack** to build a complete e-commerce application — from user authentication and product management to cart flow and responsive UI.
+I enjoy working on both frontend and backend, and I’m always looking to improve my skills by building practical, scalable web apps.  
+
