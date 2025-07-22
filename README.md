@@ -43,7 +43,7 @@ A full-stack MERN e-commerce web application built for a seamless online shoppin
 │   └── src/
 
 ---
-
+```
 ## 👨‍💻 About Me
 
 Hi, I’m **Manthan Nimonkar** – a final-year IT student who’s passionate about full-stack web development.
