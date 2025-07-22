@@ -30,14 +30,15 @@ A full-stack MERN e-commerce web application built for a seamless online shoppin
 
 ## 📁 Folder Structure
 
+```bash
 ├── backend/             # Node/Express backend
 │   ├── config/
 │   ├── controllers/
-|   ├── helpers/
-|   ├── middleware
+│   ├── helpers/
+│   ├── middleware/
 │   ├── models/
 │   └── routes/  
-├── client/             # React frontend
+├── client/              # React frontend
 │   ├── public/
 │   └── src/
 
