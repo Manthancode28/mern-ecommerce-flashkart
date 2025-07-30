@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 
-import myLogo from '../assest/ecommerce2.png'
+import myLogo from '../assest/FlashKartLogo2.png'
 import { GrSearch } from "react-icons/gr";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
@@ -59,7 +59,7 @@ const Header = () => {
       <div className=' h-full container mx-auto flex items-center px-4 md:px-8 lg:px-16 justify-between'>
            <div className=''>
                 <Link to={"/"}>
-                    <img src={myLogo} alt="Logo" className="h-12 w-auto object-contain" />
+                    <img src={myLogo} alt="Logo" className="h-14 w-auto object-contain" />
                 </Link>
             </div>
 
