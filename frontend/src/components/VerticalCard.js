@@ -5,6 +5,7 @@ import Context from '../context'
 import addToCart from '../helpers/addToCart'
 import { Link } from 'react-router-dom'
 
+//For search result
 const VerticalCard = ({loading,data = []}) => {
     const loadingList = new Array(13).fill(null)
     const { fetchUserAddToCart } = useContext(Context)

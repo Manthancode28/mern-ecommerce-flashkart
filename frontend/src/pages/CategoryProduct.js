@@ -48,6 +48,8 @@ const CategoryProduct = () => {
       })
     }
 
+    console.log("Selected category on Category list produc : ",selectCategory);
+
     useEffect(()=>{
       fetchData()
     },[filterCategoryList])

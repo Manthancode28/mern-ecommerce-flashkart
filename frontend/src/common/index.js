@@ -1,4 +1,4 @@
-const backendDomin = "http://localhost:8081"
+const backendDomin = process.env.REACT_APP_BACKEND_URL//"http://localhost:8080"
 
 const SummaryApi = {
     signUP : {
@@ -38,11 +38,11 @@ const SummaryApi = {
         method  : 'post'
     },
     categoryProduct : {
-        url : `${backendDomin}/api/get-categoryProduct`, // For display category list on Home Page
+        url : `${backendDomin}/api/get-categoryProduct`,
         method : 'get'
     },
     categoryWiseProduct : {
-        url : `${backendDomin}/api/category-product`, // Used in heler for fecthing product accourding to category
+        url : `${backendDomin}/api/category-product`,
         method : 'post'
     },
     productDetails : {
@@ -76,7 +76,16 @@ const SummaryApi = {
     filterProduct : {
         url : `${backendDomin}/api/filter-product`,
         method : 'post'
+    },
+    payment : {
+        url : `${backendDomin}/api/checkout`,
+        method  : 'post'
+    },
+    getOrder : {
+        url : `${backendDomin}/api/order-list`,
+        method : 'get'
     }
+    
 }
 
 

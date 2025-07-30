@@ -34,3 +34,4 @@ const searchProduct = async(req,res)=>{
 }
 
 module.exports = searchProduct
+
