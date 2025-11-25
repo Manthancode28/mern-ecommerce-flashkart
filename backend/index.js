@@ -3,6 +3,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const connectDB = require('./config/db')
+const path = require('path') // NEW: Import path module
 // Add this line to connect Redis
 require('./config/redisConfig') 
 
@@ -20,6 +21,16 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), webhooks);
 app.use(express.json())
 app.use(cookieParser())
 app.use("/api",router)
+
+
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
+});
+
+// ----------------------------------------------------
 
 const PORT = process.env.PORT || 8081;
 
