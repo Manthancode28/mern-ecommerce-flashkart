@@ -2,6 +2,13 @@
 # FlashKart 🛒⚡
 
 A full-stack MERN e-commerce web application built for a seamless online shopping experience with modern UI, secure authentication, and real-time cart functionality.
+
+---
+
+## 🚀 Live Demo
+
+🌐 [Visit FlashKart Live](https://mern-ecommerce-flashkart-1.onrender.com/)
+
 ---
 
 ## 🚀 Features
@@ -17,6 +24,7 @@ A full-stack MERN e-commerce web application built for a seamless online shoppin
 - 🌐 Clean navigation and user experience
 
 ---
+
 ## 🔧 Tech Stack
 
 | Frontend       | Backend        | Database | Other Tools        |
