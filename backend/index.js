@@ -23,13 +23,12 @@ app.use(cookieParser())
 app.use("/api",router)
 
 
-const buildPath = path.resolve(__dirname, '..', 'frontend', 'build');
+const buildPath = path.join(__dirname, '..', 'frontend', 'build');
 
 app.use(express.static(buildPath));
 
 
 app.get('*', (req, res) => {
-    
     res.sendFile(path.join(buildPath, 'index.html'));
 });
 
