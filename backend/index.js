@@ -3,8 +3,11 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const connectDB = require('./config/db')
+// Add this line to connect Redis
+require('./config/redisConfig') 
+
 const router = require('./routes')
-const webhooks = require('./controller/order/webhook'); // Directly import webhook controller
+const webhooks = require('./controller/order/webhook');
 
 const app = express()
 app.use(cors({
@@ -14,13 +17,11 @@ app.use(cors({
 
 app.post('/api/webhook', express.raw({ type: 'application/json' }), webhooks);
 
-
 app.use(express.json())
 app.use(cookieParser())
 app.use("/api",router)
 
 const PORT = process.env.PORT || 8081;
-
 
 connectDB().then(()=>{
     app.listen(PORT,()=>{
@@ -28,4 +29,3 @@ connectDB().then(()=>{
         console.log("Server is running "+PORT)
     })
 })
- 

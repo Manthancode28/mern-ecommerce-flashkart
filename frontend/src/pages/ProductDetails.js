@@ -166,12 +166,12 @@ const ProductDetails = () => {
 
                 <div className='text-red-600 bg-slate-200 h-6 lg:h-8  animate-pulse flex items-center gap-1 w-full'>
     
-                </div>
+              </div>
 
-                <div className='flex items-center gap-2 text-2xl lg:text-3xl font-medium my-1 h-6 lg:h-8  animate-pulse w-full'>
+              <div className='flex items-center gap-2 text-2xl lg:text-3xl font-medium my-1 h-6 lg:h-8  animate-pulse w-full'>
                   <p className='text-red-600 bg-slate-200 w-full'></p>
                   <p className='text-slate-400 line-through bg-slate-200 w-full'></p>
-                </div>
+              </div>
 
                 <div className='flex items-center gap-3 my-2 w-full'>
                   <button className='h-6 lg:h-8  bg-slate-200 rounded animate-pulse w-full'></button>
