@@ -1,35 +1,38 @@
-import SummaryApi from "../common"
+import SummaryApi from "../common";
 import { toast } from 'react-toastify'
 
-const addToCart = async(e,id) =>{
-    e?.stopPropagation()
-    e?.preventDefault()
+const addToCart = async(e, id, socket, squadId) => {
+    e?.stopPropagation();
+    e?.preventDefault();
 
-    const response = await fetch(SummaryApi.addToCartProduct.url,{
+    const response = await fetch(SummaryApi.addToCartProduct.url, {
         method : SummaryApi.addToCartProduct.method,
-        credentials : 'include',
         headers : {
-            "content-type" : 'application/json'
+            "content-type" : "application/json",
+            "squad-id": squadId // Pass squad info to backend
         },
-        body : JSON.stringify(
-            { productId : id }
-        )
-    })
+        credentials : 'include',
+        body : JSON.stringify({
+            productId : id,
+            squadId : squadId // Send squadId to link the product to the squad
+        })
+    });
 
-    const responseData = await response.json()
+    const dataResponse = await response.json();
 
-    if(responseData.success){
-        toast.success(responseData.message)
+    if(dataResponse.success){
+        toast.success(dataResponse.message);
+        // SIGNAL THE PARTNER
+        if(socket && squadId){
+            socket.emit("send_cart_update", { squadId });
+        }
     }
 
-    if(responseData.error){
-        toast.error(responseData.message)
+    if(dataResponse.error){
+        toast.error(dataResponse.message);
     }
 
-
-    return responseData
-
+    return dataResponse;
 }
 
-
-export default addToCart
+export default addToCart;

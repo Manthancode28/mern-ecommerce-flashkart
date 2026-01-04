@@ -2,11 +2,17 @@ const addToCartModel = require("../../models/cartProduct")
 
 const addToCartViewProduct = async(req,res)=>{
     try{
-        const currentUser = req.userId
+        const currUser = req.userId
+        const squadId = req.headers['squad-id']; // 👈 GET FROM HEADERS
 
-        const allProduct = await addToCartModel.find({
-            userId : currentUser
-        }).populate("productId")
+        let query = { userId : currUser };
+        
+        // If in squad, fetch everything for that squad room
+        if(squadId && squadId !== "null"){
+            query = { squadId : squadId };
+        }
+
+        const allProduct = await addToCartModel.find(query).populate("productId")
 
         res.json({
             data : allProduct,
@@ -23,4 +29,4 @@ const addToCartViewProduct = async(req,res)=>{
     }
 }
 
-module.exports =  addToCartViewProduct
+module.exports = addToCartViewProduct

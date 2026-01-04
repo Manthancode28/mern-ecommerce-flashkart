@@ -5,6 +5,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import addToCart from '../helpers/addToCart'
 import Context from '../context'
+import { useSquad } from '../context/SquadContext'; // 1. IMPORT THE HOOK
 
 const VerticalCardProduct = ({category, heading}) => {
     const [data,setData] = useState([])
@@ -16,10 +17,18 @@ const VerticalCardProduct = ({category, heading}) => {
 
     const { fetchUserAddToCart } = useContext(Context)
 
-    const handleAddToCart = async(e,id)=>{
-       await addToCart(e,id)
-       fetchUserAddToCart()
-    }
+    const { socket, squadId } = useSquad();
+
+    const handleAddToCart = async (e, id) => {
+        await addToCart(e, id, socket, squadId);        
+        // Refresh your own local count
+        fetchUserAddToCart();
+
+        // 3. BROADCAST TO PARTNER (Fixed the undefined error)
+        if (socket && squadId) {
+            socket.emit("send_cart_update", { squadId });
+        }
+  };
 
     const fetchData = async() =>{
         setLoading(true)

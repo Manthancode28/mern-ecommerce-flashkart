@@ -13,10 +13,7 @@ async function UploadProductController(req,res){
         const uploadProduct = new productModel(req.body)
         const saveProduct = await uploadProduct.save()
 
-        // ----------------------------------------------------
-        // 2. CLEAR CACHE (Invalidation)
-        // ----------------------------------------------------
-        // We delete the specific category cache so the next request fetches fresh data
+  
         const cacheKey = `category_${saveProduct.category}`;
         
         await redisClient.del(cacheKey); 

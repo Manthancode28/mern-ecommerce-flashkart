@@ -7,6 +7,7 @@ const addToCart = mongoose.Schema({
    },
    quantity : Number,
    userId : String,
+   squadId : String 
 },{
     timestamps : true
 })

@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import addToCart from '../helpers/addToCart'
 import Context from '../context'
 import scrollTop from '../helpers/scrollTop'
+import { useSquad } from '../context/SquadContext'; // 1. IMPORT THE HOOK
+
 
 const CategroyWiseProductDisplay = ({category, heading}) => {
     const [data,setData] = useState([])
@@ -13,11 +15,19 @@ const CategroyWiseProductDisplay = ({category, heading}) => {
     const loadingList = new Array(13).fill(null)
 
     const { fetchUserAddToCart } = useContext(Context)
+    const { socket, squadId } = useSquad();
+    
 
-    const handleAddToCart = async(e,id)=>{
-       await addToCart(e,id)
-       fetchUserAddToCart()
-    }
+    const handleAddToCart = async (e, id) => {
+        await addToCart(e, id, socket, squadId);        
+        // Refresh your own local count
+        fetchUserAddToCart();
+
+        // 3. BROADCAST TO PARTNER (Fixed the undefined error)
+        if (socket && squadId) {
+            socket.emit("send_cart_update", { squadId });
+        }
+  };
 
 
 

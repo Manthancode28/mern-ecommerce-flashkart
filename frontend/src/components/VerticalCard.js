@@ -4,16 +4,25 @@ import displayINRCurrency from '../helpers/displayCurrency'
 import Context from '../context'
 import addToCart from '../helpers/addToCart'
 import { Link } from 'react-router-dom'
+import { useSquad } from '../context/SquadContext'
 
 //For search result
 const VerticalCard = ({loading,data = []}) => {
     const loadingList = new Array(13).fill(null)
     const { fetchUserAddToCart } = useContext(Context)
+    const {socket, squadId} = useSquad();
 
-    const handleAddToCart = async(e,id)=>{
-       await addToCart(e,id)
-       fetchUserAddToCart()
-    }
+    const handleAddToCart = async (e, id) => {
+        await addToCart(e, id, socket, squadId);        
+        // Refresh your own local count
+        fetchUserAddToCart();
+
+        // 3. BROADCAST TO PARTNER (Fixed the undefined error)
+        if (socket && squadId) {
+            socket.emit("send_cart_update", { squadId });
+        }
+  };
+
 
   return (
     <div className='grid grid-cols-[repeat(auto-fit,minmax(260px,300px))] justify-center md:justify-between md:gap-4 overflow-x-scroll scrollbar-none transition-all'>
